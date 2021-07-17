@@ -41,7 +41,7 @@ Do this step in the computer you want to setup as a Server.
 Go to **Start** --> Type and open **cmd.exe** --> Type **net user** on the Command Prompt --> Choose the account you want to connect to and remember the username.
 
 ### 2.2 - Get the Server IP address, MAC address and Subnet mask
-Go to **Start** --> Type and open **cmd.exe** --> Type **ipconfig \all** on the Command Prompt --> Look under **Network Adapter**:
+Go to **Start** --> Type and open **cmd.exe** --> Type **ipconfig /all** on the Command Prompt --> Look under **Network Adapter**:
 - The Server IP address is **IPv4 Address**.
 - The Server MAC address is **Physical Address**.
 - The Server Subnet mask is **Submet mask**.

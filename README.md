@@ -115,3 +115,9 @@ Run the following command to hibernate the Server. By doing so, you will be able
 ```
 shutdown /h
 ```
+
+## References
+- https://docs.microsoft.com/it-it/windows-server/administration/openssh/openssh_install_firstuse
+- https://www.youtube.com/watch?v=MVqYKzrFrDk
+- https://turbolab.it/controllo-remoto-270/grande-guida-wake-on-lan-wol-come-accendere-pc-windows-linux-ubuntu-lontano-usando-smartphone-android-connessione-internet-951
+- https://turbolab.it/reti-1448/guida-come-aprire-porte-tcp-udp-router-tim-fibra-tim-hub-torrent-emule-desktop-remoto-...-2416

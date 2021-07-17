@@ -111,10 +111,12 @@ ssh username@servername
 where username is the user's name of the account you want to connect to in the Server, and servername is the Server ipv4 address. If the selected Server account has a password, it will be asked.
 
 ## Hibernate the Server
-Run the following command to hibernate the Server. By doing so, you will be able to wake it again using wolcmd.
+Connect to the Server using ssh and use the following command to hibernate it:
 ```
 shutdown /h
 ```
+By hibernating the Server, you will be able to wake it up again using wolcmd.
+
 
 ## References
 - https://docs.microsoft.com/it-it/windows-server/administration/openssh/openssh_install_firstuse

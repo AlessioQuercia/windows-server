@@ -66,12 +66,44 @@ Download and install [wolcmd](https://www.depicus.com/wake-on-lan/wake-on-lan-cm
 Once installed, add the wolcmd installation folder to your PATH variables:
 Go to **Start** --> Type in **env** and select **Edit the system environment variables** --> Click on **Environment variables** --> Click on the **Path** in the **System Variables** --> Click on **Modify** --> Click on **Add new** and type your wolcmd installation folder --> Click on **Ok**.
 
+## 4 - Setup the Modem for remote access to the Server
+The general steps are the following ones:
+- Enable Dynamic DNS (DynDNS) to be able to reach the server from outside the local network (remote network).
+- Add a TCP/UDP port forwarding rule for port **7** or **9** (or for the range **7:9**), depending on which port you are using in the wolcmd command.
+- Assign a static ip to your Server computer (manually from the server computer or from the Modem settings).
+
+Depending on the modem, the home page amd settings will be different. This guide will use TIM HUB modem, but the steps are similar for other modems. The following steps show how to setup TIM HUB modem.
+
+### 4.1 - Enable Dynamic DNS
+Create your own dynamic host domain ([no-ip](https://www.noip.com/it-IT) and [Duck DNS](https://www.duckdns.org/) are two valid free options).
+
+Once you have created and setup your dynamic host domain, follow these steps:
+Open your browser --> Search "192.168.1.1" --> Access the Modem (the default username and password are both **admin**) --> Click on **WAN Services** --> Enable **DynDNS** and then:
+- Service Name: your dynamic host service name (e.g. no-ip.com or duckdns.org).
+- HTTPS: **Enabled**.
+- Domain: your dynamic DNS domain.
+- Username: your dynamic DNS username.
+- Password: your dynamic DNS password.
+
+### 4.2 - Add Port Forwarding rules
+Open your browser --> Search "192.168.1.1" --> Access the Modem (the default username and password are both **admin**) --> Click on **WAN Services** --> Click on "Add new IPv4 port mapping" and then:
+- Name: you can choose any name.
+- Protocol: select **TCP/UDP**.
+- WAN port: **7:9** (to enable the ports 7,8 and 9).
+- LAN port: **7:9**.
+- Destination IP: **Server IPv4 Address**.
+
+### 4.3 - Assign a static ip to your Server
+Open your browser --> Search "192.168.1.1" --> Access the Modem (the default username and password are both **admin**) --> Click on **Local Network** --> Click on "Add new static lease" and then:
+- Hostname: you can choose any name.
+- MAC address: select **Server MAC Address**.
+- IP: you can choose any IP address (even the Server IPv4 Address).
+
 ## Wake up the Server
 ```
 wolcmd [MAC address] [IP address] [Subnet mask] [Port number]
 ```
-where MAC address, IP address and Subnet mask are the ones retrieved in Step 2.2 from the Server. The default Port number is 7.
-
+where MAC address, IP address and Subnet mask are the ones retrieved in Step 2.2 from the Server. The default Port number is 7, but 9 is often used as well. To broadcast the Magick Packet to the whole subnet, use 255.255.255.255 as Subnet mask (for me it is the only way of waking up the Server from a remote network, unfortunately).
 ## Connect to the Server
 ```
 ssh username@servername

@@ -149,7 +149,7 @@ By hibernating the Server, you will be able to wake it up again using wolcmd.
 
 <a name="script"></a>
 ## Server Script
-I wrote a simple batch script to automate the three commands listed above (wake up, access, hibernate the Server). Note that you still need to follow the guide steps in order to setup your client, server, and modem.
+The script **server.bat** automates the three commands listed above (wake up, access, hibernate the Server). Note that you still need to follow the guide steps in order to setup your client, server, and modem.
 
 In order to use the script as it is, you need to setup three environment variables: SERVER_USERNAME, SERVER_IP_ADDRESS, SERVER_MAC_ADDRESS. You can manually set them or use the three specific _server_ options: /set_usr, /set_ip, /set_mac. If you don't want to use environment variables, you can directly insert your server information inside the script.
 
@@ -174,7 +174,7 @@ Note: Before using the on, off, access Options, you need to set the following en
   If you don't want to use environment variables, you can manually insert the required Server information in this script.
 ```
 
-Add this script to your PATH environment variable if you want to be able to call _server_ command from anywhere with your Command Prompt.
+Add **server.bat** script to your PATH environment variable if you want to be able to call _server_ command from anywhere with your Command Prompt.
 
 
 ## References

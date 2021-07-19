@@ -86,12 +86,19 @@ Open your browser --> Search "192.168.1.1" --> Access the Modem (the default use
 - Password: your dynamic DNS password.
 
 ### 4.2 - Add Port Forwarding rules
-Open your browser --> Search "192.168.1.1" --> Access the Modem (the default username and password are both **admin**) --> Click on **WAN Services** --> Click on "Add new IPv4 port mapping" and then:
-- Name: you can choose any name.
-- Protocol: select **TCP/UDP**.
-- WAN port: **7:9** (to enable the ports 7,8 and 9).
-- LAN port: **7:9**.
-- Destination IP: **Server IPv4 Address**.
+Open your browser --> Search "192.168.1.1" --> Access the Modem (the default username and password are both **admin**) --> Click on **WAN Services** --> Then:
+- Click on "Add new IPv4 port mapping" and fill with the following information:
+  - Name: **Wake Server** (or any other name).
+  - Protocol: select **TCP/UDP**.
+  - WAN port: **7:9** (to enable the ports 7,8 and 9).
+  - LAN port: **7:9**.
+  - Destination IP: **Server IPv4 Address**.
+- Click on "Add new IPv4 port mapping" and fill with the following information:
+  - Name: **SSH Server** (or any other name).
+  - Protocol: select **TCP**.
+  - WAN port: **22**.
+  - LAN port: **22**.
+  - Destination IP: **Server IPv4 Address**.
 
 ### 4.3 - Assign a static ip to your Server
 Open your browser --> Search "192.168.1.1" --> Access the Modem (the default username and password are both **admin**) --> Click on **Local Network** --> Click on "Add new static lease" and then:

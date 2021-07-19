@@ -174,6 +174,8 @@ Note: Before using the on, off, access Options, you need to set the following en
   If you don't want to use environment variables, you can manually insert the required Server information in this script.
 ```
 
+Add this script to your PATH environment variable if you want to be able to call _server_ command from anywhere with your Command Prompt.
+
 
 ## References
 - https://docs.microsoft.com/it-it/windows-server/administration/openssh/openssh_install_firstuse

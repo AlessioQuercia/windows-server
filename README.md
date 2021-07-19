@@ -1,6 +1,20 @@
 # WindowsHomeServer
-Setup Windows computer as a Server.
+Guide to setup Windows computer as a Server.
 
+#### Guide
+1. [Setup SSH on Windows](#ssh)
+2. [Setup the Server](#server)
+3. [Setup the Client](#client)
+4. [Setup the Modem](#modem)
+
+#### Commands and script
+- [Wake up the Server](#wake)
+- [Access the Server](#access)
+- [Hibernate the Server](#hibernate)
+- [Server script](#script)
+
+
+<a name="ssh"></a>
 ## 1 - Setup SSH on Windows
 Repeat this step in the computer you want to setup as a Server and in every local computer you want to use to connect to the Server.
 
@@ -34,6 +48,7 @@ Get-NetFirewallRule -Name *ssh*
 New-NetFirewallRule -Name sshd -DisplayName 'OpenSSH Server (sshd)' -Enabled True -Direction Inbound -Protocol TCP -Action Allow -LocalPort 22
 ```
 
+<a name="server"></a>
 ## 2 - Setup the Server
 Do this step in the computer you want to setup as a Server.
 
@@ -57,6 +72,7 @@ Go to **Start** --> **Settings** --> **Network and Internet** --> **Ethernet** -
 
 Note that every BIOS is different, therefore the Wake on Lan option could be found under different names or, in the worst case, could be unavailable.
 
+<a name="client"></a>
 ## 3 - Setup the Client
 Do this step in every local computer you want to use to connect to the Server.
 
@@ -66,7 +82,10 @@ Download and install [wolcmd](https://www.depicus.com/wake-on-lan/wake-on-lan-cm
 Once installed, add the wolcmd installation folder to your PATH variables:
 Go to **Start** --> Type in **env** and select **Edit the system environment variables** --> Click on **Environment variables** --> Click on the **Path** in the **System Variables** --> Click on **Modify** --> Click on **Add new** and type your wolcmd installation folder --> Click on **Ok**.
 
-## 4 - Setup the Modem for remote access to the Server
+<a name="modem"></a>
+## 4 - Setup the Modem
+If you only want to access your Server from your local network (e.g. from your home), then you can skip this step. On the other hand, if you want to be able to access the Server from any remote place, procede with the following steps.
+
 The general steps are the following ones:
 - Enable Dynamic DNS (DynDNS) to be able to reach the server from outside the local network (remote network).
 - Add a TCP/UDP port forwarding rule for port **7** or **9** (or for the range **7:9**), depending on which port you are using in the wolcmd command.
@@ -106,23 +125,54 @@ Open your browser --> Search "192.168.1.1" --> Access the Modem (the default use
 - MAC address: select **Server MAC Address**.
 - IP: you can choose any IP address (even the Server IPv4 Address).
 
+<a name="wake"></a>
 ## Wake up the Server
 ```
 wolcmd [MAC address] [IP address] [Subnet mask] [Port number]
 ```
 where MAC address, IP address and Subnet mask are the ones retrieved in Step 2.2 from the Server. The default Port number is 7, but 9 is often used as well. To broadcast the Magick Packet to the whole subnet, use 255.255.255.255 as Subnet mask (for me it is the only way of waking up the Server from a remote network, unfortunately).
-## Connect to the Server
+
+<a name="access"></a>
+## Access the Server
 ```
 ssh username@servername
 ```
 where username is the user's name of the account you want to connect to in the Server, and servername is the Server ipv4 address. If the selected Server account has a password, it will be asked.
 
+<a name="hibernate"></a>
 ## Hibernate the Server
 Connect to the Server using ssh and use the following command to hibernate it:
 ```
 shutdown /h
 ```
 By hibernating the Server, you will be able to wake it up again using wolcmd.
+
+<a name="script"></a>
+## Server Script
+I wrote a simple batch script to automate the three commands listed above (wake up, access, hibernate the Server). Note that you still need to follow the guide steps in order to setup your client, server, and modem.
+
+In order to use the script as it is, you need to setup three environment variables: SERVER_USERNAME, SERVER_IP_ADDRESS, SERVER_MAC_ADDRESS. You can manually set them or use the three specific _server_ options: /set_usr, /set_ip, /set_mac. If you don't want to use environment variables, you can directly insert your server information inside the script.
+
+```
+Usage:
+
+  server [Options]
+
+Options:
+
+  /on                     Turn the Server on.
+  /off                    Turn the Server off.
+  /access                 Access the Server.
+  /set_usr [username]     Set an environment variable with the Server username you want to connect to.
+  /set_ip [ip_address]    Set an environment variable with the Server IP address.
+  /set_mac [mac_address]  Set an environment variable with the Server MAC address.
+
+Note: Before using the on, off, access Options, you need to set the following environment variables (either manually or using the /set options):
+      - SERVER_USERNAME      Username of the account you want to connect in the Server.
+      - SERVER_IP_ADDRESS    IP address of the Server.
+      - SERVER_MAC_ADDRESS   MAC address of the Server.
+  If you don't want to use environment variables, you can manually insert the required Server information in this script.
+```
 
 
 ## References

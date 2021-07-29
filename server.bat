@@ -36,7 +36,7 @@ exit /b
 
 
 :turn_off
-ssh %SERVER_USERNAME%@%SERVER_IP_ADDRESS% "shutdown /h"
+ssh %SERVER_USERNAME%@%SERVER_IP_ADDRESS% "cmd.exe /k shutdown /h"
 exit /b
 
 

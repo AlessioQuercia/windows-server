@@ -1,5 +1,4 @@
-# WindowsHomeServer
-Guide to setup Windows computer as a Server.
+# Guide to setup Windows as a Server
 
 ### Guide
 1. [Setup SSH on Windows](#ssh)
@@ -52,7 +51,7 @@ New-NetFirewallRule -Name sshd -DisplayName 'OpenSSH Server (sshd)' -Enabled Tru
 
 <a name="server"></a>
 ## 2 - Setup the Server
-Do this step in the computer you want to setup as a Server. Please note that during this guide I used a computer with Windows 10 - Build 19042 (20H2).
+Do this step in the computer you want to setup as a Server. Please note that during this guide I used a computer with Windows 10 - Home edition - Build 19042 (20H2).
 
 ### 2.1 - Get the list of users
 Go to **Start** --> Type and open **cmd.exe** --> Type **net user** on the Command Prompt --> Choose the account you want to connect to and remember the username.
@@ -76,7 +75,7 @@ Note that every BIOS is different, therefore the Wake on Lan option could be fou
 
 <a name="client"></a>
 ## 3 - Setup the Client
-Do this step in every local computer you want to use to connect to the Server. During this guide I used a computer with Windows 10 - Build 19043 (21H1).
+Do this step in every local computer you want to use to connect to the Server. During this guide I used a computer with Windows 10 - Home edition - Build 19043 (21H1).
 
 ## 3.1 - Install wolcmd and add it to your PATH
 Download and install [wolcmd](https://www.depicus.com/wake-on-lan/wake-on-lan-cmd). 

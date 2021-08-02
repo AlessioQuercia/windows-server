@@ -1,4 +1,4 @@
-# Guide to setup Windows as a Server
+# Setup Windows computer as a Server
 
 ### Guide
 1. [Setup SSH on Windows](#ssh)

@@ -54,7 +54,20 @@ exit /b
 
 
 :backup
+goto :backup_reg
 wsl.exe rsync -aruvPR %SRC_BKP% %SERVER_USERNAME%@%SERVER_IP_ADDRESS%:%DST_BKP%
+exit /b
+
+
+:backup_reg
+mkdir "reg"
+reg export HKLM "reg/HKLM.reg" /y
+reg export HKCU "reg/HKCU.reg" /y
+reg export HKCR "reg/HKCR.reg" /y
+reg export HKU "reg/HKU.reg" /y
+reg export HKCC "reg/HKCC.reg" /y
+wsl.exe rsync -aruvP "reg/" %SERVER_USERNAME%@%SERVER_IP_ADDRESS%:%DST_BKP%/
+rmdir /s "reg"
 exit /b
 
 

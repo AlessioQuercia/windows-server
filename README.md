@@ -1,17 +1,18 @@
-# WindowsHomeServer
-Guide to setup Windows computer as a Server.
+# Setup Windows computer as a Server
 
-#### Guide
+### Guide
 1. [Setup SSH on Windows](#ssh)
 2. [Setup the Server](#server)
 3. [Setup the Client](#client)
 4. [Setup the Modem](#modem)
 
-#### Commands and script
+### Commands and script
 - [Wake up the Server](#wake)
 - [Access the Server](#access)
 - [Hibernate the Server](#hibernate)
 - [Server script](#script)
+
+### [References](#ref)
 
 
 <a name="ssh"></a>
@@ -50,7 +51,7 @@ New-NetFirewallRule -Name sshd -DisplayName 'OpenSSH Server (sshd)' -Enabled Tru
 
 <a name="server"></a>
 ## 2 - Setup the Server
-Do this step in the computer you want to setup as a Server.
+Do this step in the computer you want to setup as a Server. Please note that during this guide I used a computer with Windows 10 - Home edition - Build 19042 (20H2).
 
 ### 2.1 - Get the list of users
 Go to **Start** --> Type and open **cmd.exe** --> Type **net user** on the Command Prompt --> Choose the account you want to connect to and remember the username.
@@ -74,7 +75,7 @@ Note that every BIOS is different, therefore the Wake on Lan option could be fou
 
 <a name="client"></a>
 ## 3 - Setup the Client
-Do this step in every local computer you want to use to connect to the Server.
+Do this step in every local computer you want to use to connect to the Server. During this guide I used a computer with Windows 10 - Home edition - Build 19043 (21H1).
 
 ## 3.1 - Install wolcmd and add it to your PATH
 Download and install [wolcmd](https://www.depicus.com/wake-on-lan/wake-on-lan-cmd). 
@@ -176,7 +177,7 @@ Note: Before using the on, off, access Options, you need to set the following en
 
 Add **server.bat** script to your PATH environment variable if you want to be able to call _server_ command from anywhere with your Command Prompt.
 
-
+<a name="ref"></a>
 ## References
 - https://docs.microsoft.com/it-it/windows-server/administration/openssh/openssh_install_firstuse
 - https://www.youtube.com/watch?v=MVqYKzrFrDk
